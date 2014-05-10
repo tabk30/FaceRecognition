@@ -1,0 +1,11 @@
+g++ `pkg-config opencv --cflags --libs` -c src/pca.cpp -o build/pca.o
+src/pca.cpp: In function ‘void read_imgList(const string&, std::vector<cv::Mat>&)’:
+src/pca.cpp:57:9: error: ‘Error’ was not declared in this scope
+src/pca.cpp: In function ‘cv::Mat toGrayscale(cv::InputArray)’:
+src/pca.cpp:81:9: error: ‘Error’ was not declared in this scope
+src/pca.cpp: In function ‘void onTrackbar(int, void*)’:
+src/pca.cpp:107:38: error: ‘DATA_AS_ROW’ is not a member of ‘cv::PCA’
+src/pca.cpp: In function ‘int main(int, char**)’:
+src/pca.cpp:145:9: error: ‘Error’ was not declared in this scope
+src/pca.cpp:152:30: error: ‘DATA_AS_ROW’ is not a member of ‘cv::PCA’
+make: *** [all] Error 1

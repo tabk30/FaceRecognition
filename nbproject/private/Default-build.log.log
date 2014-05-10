@@ -1,0 +1,6 @@
+/usr/bin/uic-qt4 mainscreen.ui -o ui_mainscreen.h
+/usr/bin/g++ -c -g3 -gdwarf-2 -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -o main.o main.cpp
+/usr/bin/g++ -c -g3 -gdwarf-2 -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -o mainscreen.o mainscreen.cpp
+/usr/bin/moc-qt4 -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. mainscreen.h -o moc_mainscreen.cpp
+/usr/bin/g++ -c -g3 -gdwarf-2 -O2 -Wall -W -D_REENTRANT -DQT_WEBKIT -DQT_NO_DEBUG -DQT_GUI_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/share/qt4/mkspecs/linux-g++-64 -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtGui -I/usr/include/qt4 -I. -I. -o moc_mainscreen.o moc_mainscreen.cpp
+g++ -m64 -Wl,-O1 -o FaceRecognitionUI main.o mainscreen.o moc_mainscreen.o    -L/usr/lib/x86_64-linux-gnu -lQtGui -lQtCore -lpthread 
