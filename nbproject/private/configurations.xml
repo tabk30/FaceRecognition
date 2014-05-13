@@ -932,6 +932,7 @@
           </df>
           <df name="lib">
             <in>CompareImage.h</in>
+            <in>FaceDetect.h</in>
             <in>FaceRecogniontPCA.h</in>
             <in>ImageConvert.h</in>
             <in>ImageData.h</in>
@@ -941,6 +942,13 @@
             <in>Suggest.hpp</in>
           </df>
           <df name="src">
+            <df name="detect">
+              <df name="dataTraining">
+                <df name="haarcascades">
+                </df>
+              </df>
+              <in>FaceDetect.cpp</in>
+            </df>
             <in>CompareImage.cpp</in>
             <in>FaceRecogniontPCA.cpp</in>
             <in>ImageConvert.cpp</in>

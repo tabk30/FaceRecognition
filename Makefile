@@ -49,7 +49,9 @@ OBJECTS       = main.o \
 		mainscreen.o \
 		moc_mainscreen.o \
                 import/PCA/src/PathGenerate.o \
-                import/PCA/src/ImageData.o
+                import/PCA/src/ImageData.o \
+                import/PCA/src/FaceRecogniontPCA.o \
+                import/PCA/src/detect/FaceDetect.o
 DIST          = /usr/share/qt4/mkspecs/common/unix.conf \
 		/usr/share/qt4/mkspecs/common/linux.conf \
 		/usr/share/qt4/mkspecs/common/gcc-base.conf \

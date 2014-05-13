@@ -4,10 +4,10 @@
     <df root="." name="0">
       <df name="import">
         <df name="PCA">
-          <df name="lib">
-            <in>FaceRecogniontPCA.h</in>
-          </df>
           <df name="src">
+            <df name="detect">
+              <in>FaceDetect.cpp</in>
+            </df>
             <in>FaceRecogniontPCA.cpp</in>
           </df>
         </df>
@@ -51,6 +51,8 @@
               <pElem>/usr/include/qt4/QtCore</pElem>
               <pElem>/usr/include/qt4/QtGui</pElem>
               <pElem>/usr/include/qt4</pElem>
+              <pElem>/usr/local/include/opencv</pElem>
+              <pElem>/usr/local/include</pElem>
             </incDir>
             <preprocessorList>
               <Elem>QT_CORE_LIB</Elem>
@@ -63,19 +65,20 @@
           </ccTool>
         </makeTool>
       </makefileType>
-      <item path="import/PCA/lib/FaceRecogniontPCA.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="import/PCA/src/FaceRecogniontPCA.cpp"
+            ex="false"
+            tool="1"
+            flavor2="4">
+        <ccTool>
+        </ccTool>
+      </item>
+      <item path="import/PCA/src/detect/FaceDetect.cpp"
             ex="false"
             tool="1"
             flavor2="0">
       </item>
-      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      <item path="main.cpp" ex="false" tool="1" flavor2="4">
         <ccTool>
-          <incDir>
-            <pElem>/usr/local/include/opencv</pElem>
-            <pElem>/usr/local/include</pElem>
-          </incDir>
         </ccTool>
       </item>
       <item path="mainscreen.cpp" ex="false" tool="1" flavor2="4">

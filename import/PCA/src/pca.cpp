@@ -28,7 +28,7 @@
 #include "../lib/ImageData.h"
 #include "../lib/NearestList.hpp"
 #include "../lib/Statistic.hpp"
-
+#include "../lib/FaceRecogniontPCA.h"
 using namespace cv;
 using namespace std;
 
@@ -313,77 +313,80 @@ Mat formatImagesForPCA(const vector<Mat> &data) {
 
 int main(int argc, const char *argv[]) {
 
-    ImageData * image_process = new ImageData(100, 100);
-    PathGenerate * path = new PathGenerate("/home/tabk30/programming/c++/PCA/Image/PGM/profie_face/train", "Info/train.txt");
-    path->generate();
-    delete path;
-
-    path = new PathGenerate("/home/tabk30/programming/c++/PCA/Image/PGM/profie_face/test", "Info/test.txt");
-    path->generate();
-    delete path;
-    //Statistic * statistic = new Statistic();
-    ///////////////////////////////////////////////////////////////////
-    vector<Mat> db, test_db;
-    vector<string> labels, truth;
-    image_process->loadImage("Info/train.txt", db, labels);
-    image_process->loadImage("Info/test.txt", test_db, truth);
-    Mat train = formatImagesForPCA(db);
-    Mat test = formatImagesForPCA(test_db);
-    //image_process->saveImage("/home/tabk30/programming/c++/PCA/Image/PGM/frontal face/train", db, labels);
-    //image_process->saveImage("/home/tabk30/programming/c++/PCA/Image/PGM/frontal face/test", test_db, truth);
-    ///////////////////////////////////////////////////////////////////
-
-
-    //int component = 50;
-    PCA pca(train, cv::Mat(), CV_PCA_DATA_AS_ROW, 0.95);
-    Mat train_compress, test_compressed;
-    test_compressed.create(test.rows, db.size(), test.type());
-    train_compress.create(train.rows, db.size(), train.type());
-    for (int i = 0; i < train_compress.rows; i++) {
-        Mat vec = train.row(i), coeffs = train_compress.row(i);
-        // compress the vector, the result will be stored
-        // in the i-th row of the output matrix
-        pca.project(vec, coeffs);
-        // and then reconstruct it
-        //pca.backProject(coeffs, reconstructed);
-        // and measure the error
-        //printf("%d. diff = %g\n", i, norm(vec, reconstructed, NORM_L2));
-        //printfRow(coeffs, i);
-    }
-    
-    for (int i = 0; i < test.rows; i++) {
-        Mat vec = test.row(i), coeffs = test_compressed.row(i);
-        // compress the vector, the result will be stored
-        // in the i-th row of the output matrix
-        pca.project(vec, coeffs);
-        //pca.eigenvalues.cols;
-        // and then reconstruct it
-        //pca.backProject(coeffs, reconstructed);
-        // and measure the error
-        //printf("%d. diff = %g\n", i, norm(vec, reconstructed, NORM_L2));
-        //printfRow(coeffs, i);
-    }
-
-
-    //printfRow(db_supspace, 0);
-    int truth_number = 0, wrong_number = 0;
-    vector<int> test_result_label;
-    for (int i = 0; i < test_compressed.rows; i++) {
-        Mat temp = test_compressed.row(i);
-        int test_result = 0;
-        test_result = findThreeNearest(train_compress, temp, labels, truth.at(i));
-        cout << i;
-        if (test_result == 0) {
-            wrong_number++;
-        } else {
-            truth_number++;
-        }
-        //cout << "truth: " << truth.at(i) << endl;
-        //nearest->printList();
-        //statistic->addTest(truth.at(i), i + 1, nearest);
-    }
-    cout << "test sum: " << test_compressed.rows << endl;
-    cout << "   truth: " << truth_number << endl << "  wrong: " << wrong_number;
-    //statistic->printStatistic();
-    return 0;
+//    ImageData * image_process = new ImageData(100, 100);
+//    PathGenerate * path = new PathGenerate("/home/tabk30/programming/c++/PCA/Image/PGM/profie_face/train", "Info/train.txt");
+//    path->generate();
+//    delete path;
+//
+//    path = new PathGenerate("/home/tabk30/programming/c++/PCA/Image/PGM/profie_face/test", "Info/test.txt");
+//    path->generate();
+//    delete path;
+//    //Statistic * statistic = new Statistic();
+//    ///////////////////////////////////////////////////////////////////
+//    vector<Mat> db, test_db;
+//    vector<string> labels, truth;
+//    image_process->loadImage("Info/train.txt", db, labels);
+//    image_process->loadImage("Info/test.txt", test_db, truth);
+//    Mat train = formatImagesForPCA(db);
+//    Mat test = formatImagesForPCA(test_db);
+//    //image_process->saveImage("/home/tabk30/programming/c++/PCA/Image/PGM/frontal face/train", db, labels);
+//    //image_process->saveImage("/home/tabk30/programming/c++/PCA/Image/PGM/frontal face/test", test_db, truth);
+//    ///////////////////////////////////////////////////////////////////
+//
+//
+//    //int component = 50;
+//    PCA pca(train, cv::Mat(), CV_PCA_DATA_AS_ROW, 0.95);
+//    Mat train_compress, test_compressed;
+//    test_compressed.create(test.rows, db.size(), test.type());
+//    train_compress.create(train.rows, db.size(), train.type());
+//    for (int i = 0; i < train_compress.rows; i++) {
+//        Mat vec = train.row(i), coeffs = train_compress.row(i);
+//        // compress the vector, the result will be stored
+//        // in the i-th row of the output matrix
+//        pca.project(vec, coeffs);
+//        // and then reconstruct it
+//        //pca.backProject(coeffs, reconstructed);
+//        // and measure the error
+//        //printf("%d. diff = %g\n", i, norm(vec, reconstructed, NORM_L2));
+//        //printfRow(coeffs, i);
+//    }
+//    
+//    for (int i = 0; i < test.rows; i++) {
+//        Mat vec = test.row(i), coeffs = test_compressed.row(i);
+//        // compress the vector, the result will be stored
+//        // in the i-th row of the output matrix
+//        pca.project(vec, coeffs);
+//        //pca.eigenvalues.cols;
+//        // and then reconstruct it
+//        //pca.backProject(coeffs, reconstructed);
+//        // and measure the error
+//        //printf("%d. diff = %g\n", i, norm(vec, reconstructed, NORM_L2));
+//        //printfRow(coeffs, i);
+//    }
+//
+//
+//    //printfRow(db_supspace, 0);
+//    int truth_number = 0, wrong_number = 0;
+//    vector<int> test_result_label;
+//    for (int i = 0; i < test_compressed.rows; i++) {
+//        Mat temp = test_compressed.row(i);
+//        int test_result = 0;
+//        test_result = findThreeNearest(train_compress, temp, labels, truth.at(i));
+//        cout << i;
+//        if (test_result == 0) {
+//            wrong_number++;
+//        } else {
+//            truth_number++;
+//        }
+//        //cout << "truth: " << truth.at(i) << endl;
+//        //nearest->printList();
+//        //statistic->addTest(truth.at(i), i + 1, nearest);
+//    }
+//    cout << "test sum: " << test_compressed.rows << endl;
+//    cout << "   truth: " << truth_number << endl << "  wrong: " << wrong_number;
+//    //statistic->printStatistic();
+//    return 0;
+    FaceRecogniontPCA * pca_test = new FaceRecogniontPCA();
+    Mat test;
+    pca_test->recognition("/home/tabk30/GR/Image_data/training/668574886/100002325878730_1073741978.jpg");
 }

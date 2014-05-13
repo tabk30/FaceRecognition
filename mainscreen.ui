@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>907</width>
-    <height>390</height>
+    <width>1301</width>
+    <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,10 +16,10 @@
   <widget class="QGroupBox" name="Input">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>30</x>
      <y>10</y>
-     <width>431</width>
-     <height>361</height>
+     <width>951</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="title">
@@ -39,8 +39,8 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>441</width>
-      <height>61</height>
+      <width>211</width>
+      <height>101</height>
      </rect>
     </property>
     <property name="title">
@@ -49,7 +49,7 @@
     <widget class="QRadioButton" name="pca">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>10</x>
        <y>30</y>
        <width>91</width>
        <height>22</height>
@@ -65,8 +65,8 @@
     <widget class="QRadioButton" name="lda">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>30</y>
+       <x>10</x>
+       <y>60</y>
        <width>116</width>
        <height>22</height>
       </rect>
@@ -79,39 +79,13 @@
      </property>
     </widget>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>110</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Enhanced Local Texture </string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="use_ELT">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>110</y>
-      <width>97</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Use</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>441</width>
-      <height>80</height>
+      <x>370</x>
+      <y>30</y>
+      <width>241</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="title">
@@ -120,7 +94,7 @@
     <widget class="QRadioButton" name="profile_face">
      <property name="geometry">
       <rect>
-       <x>70</x>
+       <x>10</x>
        <y>30</y>
        <width>116</width>
        <height>22</height>
@@ -136,8 +110,8 @@
     <widget class="QRadioButton" name="fronta_face">
      <property name="geometry">
       <rect>
-       <x>220</x>
-       <y>30</y>
+       <x>10</x>
+       <y>60</y>
        <width>116</width>
        <height>22</height>
       </rect>
@@ -147,13 +121,39 @@
      </property>
     </widget>
    </widget>
+   <widget class="QGroupBox" name="groupBox_3">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>30</y>
+      <width>171</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Enhanced Local Texture </string>
+    </property>
+    <widget class="QCheckBox" name="use_ELT">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>20</y>
+       <width>97</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Use</string>
+     </property>
+    </widget>
+   </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>230</y>
+      <x>520</x>
+      <y>30</y>
       <width>421</width>
-      <height>71</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="title">
@@ -162,8 +162,8 @@
     <widget class="QLineEdit" name="path">
      <property name="geometry">
       <rect>
-       <x>10</x>
-       <y>20</y>
+       <x>20</x>
+       <y>40</y>
        <width>291</width>
        <height>31</height>
       </rect>
@@ -173,8 +173,8 @@
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>20</y>
-       <width>98</width>
+       <y>40</y>
+       <width>101</width>
        <height>31</height>
       </rect>
      </property>
@@ -186,10 +186,10 @@
    <widget class="QPushButton" name="OK">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>320</y>
-      <width>98</width>
-      <height>27</height>
+      <x>840</x>
+      <y>110</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -200,41 +200,82 @@
   <widget class="QGroupBox" name="ReSult">
    <property name="geometry">
     <rect>
-     <x>450</x>
-     <y>10</y>
-     <width>421</width>
-     <height>351</height>
+     <x>10</x>
+     <y>150</y>
+     <width>621</width>
+     <height>531</height>
     </rect>
    </property>
    <property name="title">
-    <string>Result</string>
+    <string>Face Detection</string>
    </property>
-   <widget class="QFrame" name="frame">
+   <widget class="QLabel" name="Face_Detect">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>411</width>
-      <height>221</height>
+      <width>591</width>
+      <height>481</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
-    </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
+    <property name="text">
+     <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
+  </widget>
+  <widget class="QGroupBox" name="Face_recognjtion">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>150</y>
+     <width>621</width>
+     <height>531</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Face Recognition</string>
+   </property>
+   <widget class="QLabel" name="FaceRecognition">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>260</y>
-      <width>411</width>
-      <height>80</height>
+      <y>30</y>
+      <width>591</width>
+      <height>481</height>
      </rect>
     </property>
-    <layout class="QHBoxLayout" name="horizontalLayout"/>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>10</y>
+     <width>281</width>
+     <height>181</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>List label assign for image</string>
+   </property>
+   <widget class="QLabel" name="FR_Result">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>251</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <property name="midLineWidth">
+     <number>1</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>
