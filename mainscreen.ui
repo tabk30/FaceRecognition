@@ -31,128 +31,12 @@
    <property name="checkable">
     <bool>false</bool>
    </property>
-   <widget class="QGroupBox" name="method">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>211</width>
-      <height>101</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Recognition Method</string>
-    </property>
-    <widget class="QRadioButton" name="pca">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>91</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>PCA</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="lda">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>116</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>LDA</string>
-     </property>
-     <property name="checked">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>30</y>
-      <width>241</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Data train</string>
-    </property>
-    <widget class="QRadioButton" name="profile_face">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>30</y>
-       <width>116</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Profile face</string>
-     </property>
-     <property name="checked">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="fronta_face">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>116</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Frontal face</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBox_3">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>30</y>
-      <width>171</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Enhanced Local Texture </string>
-    </property>
-    <widget class="QCheckBox" name="use_ELT">
-     <property name="geometry">
-      <rect>
-       <x>40</x>
-       <y>20</y>
-       <width>97</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Use</string>
-     </property>
-    </widget>
-   </widget>
    <widget class="QGroupBox" name="groupBox_2">
     <property name="geometry">
      <rect>
-      <x>520</x>
+      <x>20</x>
       <y>30</y>
-      <width>421</width>
+      <width>931</width>
       <height>91</height>
      </rect>
     </property>
@@ -164,7 +48,7 @@
       <rect>
        <x>20</x>
        <y>40</y>
-       <width>291</width>
+       <width>601</width>
        <height>31</height>
       </rect>
      </property>
@@ -172,7 +56,7 @@
     <widget class="QPushButton" name="brow">
      <property name="geometry">
       <rect>
-       <x>320</x>
+       <x>650</x>
        <y>40</y>
        <width>101</width>
        <height>31</height>
@@ -182,19 +66,19 @@
       <string>Select</string>
      </property>
     </widget>
-   </widget>
-   <widget class="QPushButton" name="OK">
-    <property name="geometry">
-     <rect>
-      <x>840</x>
-      <y>110</y>
-      <width>101</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>OK</string>
-    </property>
+    <widget class="QPushButton" name="OK">
+     <property name="geometry">
+      <rect>
+       <x>790</x>
+       <y>40</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>OK</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QGroupBox" name="ReSult">

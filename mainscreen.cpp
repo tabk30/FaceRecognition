@@ -35,26 +35,26 @@ void MainScreen::openFile() {
 }
 
 void MainScreen::startRecognition() {
-    bool use_elt = false;
-    int data_train = 0, method = 0;
-    //Method:
-    if (ui->pca->isChecked()) {
-        method = 0;
-    } else {
-        method = 1;
-    }
-
-    if (ui->use_ELT->isChecked()) {
-        use_elt = true;
-    } else {
-        use_elt = false;
-    }
-
-    if (ui->fronta_face->isChecked()) {
-        data_train = 1;
-    } else if (ui->profile_face->isChecked()) {
-        data_train = 0;
-    }
+//    bool use_elt = false;
+//    int data_train = 0, method = 0;
+//    //Method:
+//    if (ui->pca->isChecked()) {
+//        method = 0;
+//    } else {
+//        method = 1;
+//    }
+//
+//    if (ui->use_ELT->isChecked()) {
+//        use_elt = true;
+//    } else {
+//        use_elt = false;
+//    }
+//
+//    if (ui->fronta_face->isChecked()) {
+//        data_train = 1;
+//    } else if (ui->profile_face->isChecked()) {
+//        data_train = 0;
+//    }
 
     QString string_path = ui->path->text();
     if (string_path.toStdString().length() > 0) {

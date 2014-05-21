@@ -70,9 +70,6 @@ vector<string> FaceRecogniontPCA::recognition(string path_image) {
     }
 
     this->face_recognition = __face_detect->tagFaceRecognition(testVector);
-    cvNamedWindow("image", CV_WINDOW_AUTOSIZE);
-    cvShowImage("image", this->face_recognition);
-    cvWaitKey();
     return result;
 }
 
