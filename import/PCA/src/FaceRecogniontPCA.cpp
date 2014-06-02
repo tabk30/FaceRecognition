@@ -12,13 +12,13 @@ FaceRecogniontPCA::FaceRecogniontPCA() {
     this->LoadData();
     if (this->data.cols <= 0) {
         ImageData * image_process = new ImageData(100, 100);
-        PathGenerate * path = new PathGenerate("/home/tabk30/GR/Image_data/frontalface_filter_noise/train", "Info/train.txt");
+        PathGenerate * path = new PathGenerate("import/PCA/Image/train", "Info/train.txt");
         path->generate();
         delete path;
 
         vector<Mat> db;
-        image_process->loadImage("import/PCA/Info/train.txt", db, this->label_train);
-        //image_process->loadImage("Info/train.txt", db, this->label_train);
+        //image_process->loadImage("import/PCA/Info/train.txt", db, this->label_train);
+        image_process->loadImage("Info/train.txt", db, this->label_train);
         Mat train = formatImagesForPCA(db);
         ///////////////////////////////////////////////////////////////////
 
@@ -36,6 +36,7 @@ FaceRecogniontPCA::FaceRecogniontPCA() {
     } else {
         cout << "Load data complete" << endl;
     }
+        //cout << "test: " << this->caculateLimit("18") << endl;
     //cout << "Load data complete" << endl;
 }
 
@@ -106,7 +107,9 @@ string FaceRecogniontPCA::recognitionAFace(Mat origin) {
             __nearlest = i;
         }
     }
-    if (leastDistSq < MAX_DISTENCE) {
+    cout << "Distance " << leastDistSq << "--" ; 
+    if (leastDistSq < this->caculateLimit(this->label_train.at(__nearlest))) {
+        
         return this->getLabel(this->label_train.at(__nearlest));
     } else
         return "";
@@ -244,4 +247,129 @@ string FaceRecogniontPCA::getLabel(string label) {
     else if (label.compare("33") == 0)
         return "Anh Pham";
     return "";
+}
+
+double FaceRecogniontPCA::caculateLimit(string label) {
+    //map<string, double> tmp_Dlist;
+    vector<Mat> tmp_Mlist;
+    //string flag = "000";
+    for (unsigned int i = 0; i + 1 < this->label_train.size(); i++) {
+        //cout << this->label_train.at(i) << endl;
+        if (this->label_train.at(i).compare(label) == 0) {
+            tmp_Mlist.push_back(this->data.row(i));
+            if (this->label_train.at(i + 1).compare(label) != 0) {
+                //cout << "size -- " << tmp_Mlist.size() << endl;
+                if (tmp_Mlist.size() > 0) {
+                    cout << "Limited: " << this->caculateALimit(tmp_Mlist) << endl;
+                    return this->caculateALimit(tmp_Mlist);
+                }
+            }
+        } else {
+            //tmp_Mlist.clear();
+            //tmp_Mlist.push_back(this->data.row(i));
+            //flag = this->label_train.at(i);
+        }
+    }
+    return 2700.F;
+}
+
+double FaceRecogniontPCA::caculateALimit(vector<Mat> tmp_Mlist) {
+    double sum_of_all = 0.0F;
+    if (tmp_Mlist.size() <= 1)
+        return 2700.F;
+    for (unsigned int i = 0; i < tmp_Mlist.size(); i++) {
+        double sum = 0.0F;
+        for (unsigned int j = 0; j < tmp_Mlist.size(); j++) {
+            if (i != j) {
+                sum = sum + cv::norm(tmp_Mlist.at(i), tmp_Mlist.at(j), cv::NORM_L2);
+            }
+        }
+        sum_of_all = sum_of_all + (sum / (tmp_Mlist.size() - 1));
+    }
+    //cout << sum_of_all / tmp_Mlist.size() << endl;
+    return sum_of_all / tmp_Mlist.size();
+
+}
+
+Mat FaceRecogniontPCA::norm_0_255(const Mat& src) {
+    // Create and return normalized image:
+    Mat dst;
+    switch(src.channels()) {
+    case 1:
+        cv::normalize(src, dst, 0, 255, NORM_MINMAX, CV_8UC1);
+        break;
+    case 3:
+        cv::normalize(src, dst, 0, 255, NORM_MINMAX, CV_8UC3);
+        break;
+    default:
+        src.copyTo(dst);
+        break;
+    }
+    return dst;
+}
+
+//
+// Calculates the TanTriggs Preprocessing as described in:
+//
+// Tan, X., and Triggs, B. "Enhanced local texture feature sets for face
+// recognition under difficult lighting conditions.". IEEE Transactions
+// on Image Processing 19 (2010), 1635–650.
+//
+// Default parameters are taken from the paper.
+//
+Mat FaceRecogniontPCA::tan_triggs_preprocessing(InputArray src,
+        float alpha = 0.1, float tau = 10.0, float gamma = 0.2, int sigma0 = 1,
+        int sigma1 = 2) {
+
+    // Convert to floating point:
+    Mat X = src.getMat();
+    X.convertTo(X, CV_32FC1);
+    // Start preprocessing:
+    Mat I;
+    pow(X, gamma, I);
+    // Calculate the DOG Image:
+    {
+        Mat gaussian0, gaussian1;
+        // Kernel Size:
+        int kernel_sz0 = (3*sigma0);
+        int kernel_sz1 = (3*sigma1);
+        // Make them odd for OpenCV:
+        kernel_sz0 += ((kernel_sz0 % 2) == 0) ? 1 : 0;
+        kernel_sz1 += ((kernel_sz1 % 2) == 0) ? 1 : 0;
+        GaussianBlur(I, gaussian0, Size(kernel_sz0,kernel_sz0), sigma0, sigma0, BORDER_CONSTANT);
+        GaussianBlur(I, gaussian1, Size(kernel_sz1,kernel_sz1), sigma1, sigma1, BORDER_CONSTANT);
+        subtract(gaussian0, gaussian1, I);
+    }
+
+    {
+        double meanI = 0.0;
+        {
+            Mat tmp;
+            pow(abs(I), alpha, tmp);
+            meanI = mean(tmp).val[0];
+
+        }
+        I = I / pow(meanI, 1.0/alpha);
+    }
+
+    {
+        double meanI = 0.0;
+        {
+            Mat tmp;
+            pow(min(abs(I), tau), alpha, tmp);
+            meanI = mean(tmp).val[0];
+        }
+        I = I / pow(meanI, 1.0/alpha);
+    }
+
+    // Squash into the tanh:
+    {
+        for(int r = 0; r < I.rows; r++) {
+            for(int c = 0; c < I.cols; c++) {
+                I.at<float>(r,c) = tanh(I.at<float>(r,c) / tau);
+            }
+        }
+        I = tau * I;
+    }
+    return this->norm_0_255(I);
 }
