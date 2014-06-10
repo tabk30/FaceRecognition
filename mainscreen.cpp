@@ -35,30 +35,9 @@ void MainScreen::openFile() {
 }
 
 void MainScreen::startRecognition() {
-//    bool use_elt = false;
-//    int data_train = 0, method = 0;
-//    //Method:
-//    if (ui->pca->isChecked()) {
-//        method = 0;
-//    } else {
-//        method = 1;
-//    }
-//
-//    if (ui->use_ELT->isChecked()) {
-//        use_elt = true;
-//    } else {
-//        use_elt = false;
-//    }
-//
-//    if (ui->fronta_face->isChecked()) {
-//        data_train = 1;
-//    } else if (ui->profile_face->isChecked()) {
-//        data_train = 0;
-//    }
 
     QString string_path = ui->path->text();
     if (string_path.toStdString().length() > 0) {
-        std::cout << "image path: " << string_path.toStdString() << std::endl;
         vector<string> _result_fr = this->pca_recogntition->recognition(string_path.toStdString());
 
         Mat face_detect = Mat(this->pca_recogntition->face_detect);
@@ -66,28 +45,25 @@ void MainScreen::startRecognition() {
 
         this->ui->Face_Detect->setPixmap(QPixmap::fromImage(q_face_detect));
         this->ui->Face_Detect->show();
-        
+
         Mat face_recognition = Mat(this->pca_recogntition->face_recognition);
         QImage q_face_recognition = this->Mat2QImage(face_recognition);
-        
+
         this->ui->FaceRecognition->setPixmap(QPixmap::fromImage(q_face_recognition));
         this->ui->FaceRecognition->show();
-        
+
         //set result:
-        //QString richText ("<h1><b><font color='green'> <font size=24>"+text+"</font></font></b>");
         string _result_display = "<ol>";
-        for(unsigned int i = 0; i < _result_fr.size(); i++){
+        for (unsigned int i = 0; i < _result_fr.size(); i++) {
             _result_display.append("<li>");
             _result_display.append(_result_fr.at(i));
             _result_display.append("</li>");
         }
         _result_display.append("<ol>");
-        QString richText (_result_display.c_str());
-        
+        QString richText(_result_display.c_str());
+
         this->ui->FR_Result->setText(richText);
         this->ui->FR_Result->show();
-    } else {
-        std::cout << "image path error" << std::endl;
     }
 }
 

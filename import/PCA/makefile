@@ -6,7 +6,7 @@ CFLAGS 	= -c -Wall -O3  -I ./include/
 CFLAGS 		+= $(shell pkg-config opencv --cflags)
 LDFLAGS 	+= $(shell pkg-config opencv --libs)
 
-SOURCES		= $(wildcard ./src/pca.cpp ./src/PathGenerate.cpp ./src/ImageData.cpp ./src/NearestList.cpp ./src/Statistic.cpp ./src/Suggest.cpp ./src/FaceRecogniontPCA.cpp ./src/detect/FaceDetect.cpp)
+SOURCES		= $(wildcard ./src/pca.cpp ./src/PathGenerate.cpp ./src/ImageData.cpp ./src/FaceRecogniontPCA.cpp ./src/detect/FaceDetect.cpp)
 #SOURCES		= $(wildcard ./src/pca_test.cpp ./src/ImageData.cpp ./src/PathGenerate.cpp)
 OBJECTS		= $(SOURCES:.cpp=.o)
 

@@ -33,8 +33,8 @@ public:
     string getLabel(string label);
     Mat norm_0_255(const Mat& src);
     Mat tan_triggs_preprocessing(InputArray src,
-            float alpha = 0.1, float tau = 10.0, float gamma = 0.2, int sigma0 = 1,
-            int sigma1 = 2);
+            float alpha, float tau , float gamma, int sigma0,
+            int sigma1);
     IplImage * face_detect;
     IplImage * face_recognition;
 private:

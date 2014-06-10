@@ -4,7 +4,6 @@
     <df root="." name="0">
       <df name="import">
         <df name="ELTFS">
-          <in>newmain.cpp</in>
         </df>
         <df name="PCA">
           <df name="build">
@@ -12,7 +11,143 @@
           <df name="data">
           </df>
           <df name="Image">
+            <df name="frontalface_alt_tree">
+              <df name="1">
+              </df>
+              <df name="10">
+              </df>
+              <df name="11">
+              </df>
+              <df name="12">
+              </df>
+              <df name="13">
+              </df>
+              <df name="14">
+              </df>
+              <df name="15">
+              </df>
+              <df name="16">
+              </df>
+              <df name="17">
+              </df>
+              <df name="18">
+              </df>
+              <df name="19">
+              </df>
+              <df name="2">
+              </df>
+              <df name="20">
+              </df>
+              <df name="21">
+              </df>
+              <df name="22">
+              </df>
+              <df name="23">
+              </df>
+              <df name="24">
+              </df>
+              <df name="25">
+              </df>
+              <df name="26">
+              </df>
+              <df name="27">
+              </df>
+              <df name="28">
+              </df>
+              <df name="29">
+              </df>
+              <df name="3">
+              </df>
+              <df name="30">
+              </df>
+              <df name="31">
+              </df>
+              <df name="32">
+              </df>
+              <df name="33">
+              </df>
+              <df name="4">
+              </df>
+              <df name="5">
+              </df>
+              <df name="6">
+              </df>
+              <df name="7">
+              </df>
+              <df name="8">
+              </df>
+              <df name="9">
+              </df>
+            </df>
             <df name="train">
+              <df name="1">
+              </df>
+              <df name="10">
+              </df>
+              <df name="11">
+              </df>
+              <df name="12">
+              </df>
+              <df name="13">
+              </df>
+              <df name="14">
+              </df>
+              <df name="15">
+              </df>
+              <df name="16">
+              </df>
+              <df name="17">
+              </df>
+              <df name="18">
+              </df>
+              <df name="19">
+              </df>
+              <df name="2">
+              </df>
+              <df name="20">
+              </df>
+              <df name="21">
+              </df>
+              <df name="22">
+              </df>
+              <df name="23">
+              </df>
+              <df name="24">
+              </df>
+              <df name="25">
+              </df>
+              <df name="26">
+              </df>
+              <df name="27">
+              </df>
+              <df name="28">
+              </df>
+              <df name="29">
+              </df>
+              <df name="3">
+              </df>
+              <df name="30">
+              </df>
+              <df name="31">
+              </df>
+              <df name="32">
+              </df>
+              <df name="33">
+              </df>
+              <df name="4">
+              </df>
+              <df name="5">
+              </df>
+              <df name="6">
+              </df>
+              <df name="7">
+              </df>
+              <df name="8">
+              </df>
+              <df name="9">
+              </df>
+            </df>
+            <df name="train_ELT">
               <df name="1">
               </df>
               <df name="10">
@@ -84,15 +219,10 @@
           <df name="Info">
           </df>
           <df name="lib">
-            <in>CompareImage.h</in>
             <in>FaceDetect.h</in>
             <in>FaceRecogniontPCA.h</in>
-            <in>ImageConvert.h</in>
             <in>ImageData.h</in>
-            <in>NearestList.hpp</in>
             <in>PathGenerate.h</in>
-            <in>Statistic.hpp</in>
-            <in>Suggest.hpp</in>
           </df>
           <df name="src">
             <df name="detect">
@@ -102,14 +232,9 @@
               </df>
               <in>FaceDetect.cpp</in>
             </df>
-            <in>CompareImage.cpp</in>
             <in>FaceRecogniontPCA.cpp</in>
-            <in>ImageConvert.cpp</in>
             <in>ImageData.cpp</in>
-            <in>NearestList.cpp</in>
             <in>PathGenerate.cpp</in>
-            <in>Statistic.cpp</in>
-            <in>Suggest.cpp</in>
             <in>pca.cpp</in>
             <in>pca_test.cpp</in>
           </df>

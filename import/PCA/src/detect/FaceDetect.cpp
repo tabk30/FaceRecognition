@@ -122,9 +122,6 @@ IplImage* FaceDetect::tagFaceRecognition(vector<int> tag_id) {
             }
         }
     }
-//    cvNamedWindow("image", CV_WINDOW_AUTOSIZE);
-//    cvShowImage("image", face_recognition);
-//    cvWaitKey();
     
     return face_recognition;
 }

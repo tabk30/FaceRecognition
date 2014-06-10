@@ -221,10 +221,7 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 main.o: main.cpp mainscreen.h \
 		import/PCA/lib/PathGenerate.h \
-		import/PCA/lib/ImageData.h \
-		import/PCA/lib/NearestList.hpp \
-		import/PCA/lib/Statistic.hpp \
-		import/PCA/lib/Suggest.hpp
+		import/PCA/lib/ImageData.h 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainscreen.o: mainscreen.cpp mainscreen.h \

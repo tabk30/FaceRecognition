@@ -6,8 +6,6 @@
 #include <iostream>
 #include "import/PCA/lib/PathGenerate.h"
 #include "import/PCA/lib/ImageData.h"
-#include "import/PCA/lib/NearestList.hpp"
-#include "import/PCA/lib/Statistic.hpp"
 #include "import/PCA/lib/FaceRecogniontPCA.h"
 
 namespace Ui {

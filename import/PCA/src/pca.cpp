@@ -25,9 +25,7 @@
 #include <math.h>
 #include <map>
 #include "../lib/PathGenerate.h"
-#include "../lib/ImageData.h"
-#include "../lib/NearestList.hpp"
-#include "../lib/Statistic.hpp"
+#include "../lib/ImageData.h"   
 #include "../lib/FaceRecogniontPCA.h"
 using namespace cv;
 using namespace std;
@@ -35,24 +33,6 @@ using namespace std;
 extern int g_nValue;
 extern vector<string> result_test;
 
-
-NearestList * findNearest(Mat data, Mat test, vector<string> label) {
-    NearestList * nearest = new NearestList();
-    //double leastDistSq = 0;
-    for (int i = 0; i < data.rows; i++) {
-        double euclidean = 0.0f;
-        //cout << "size: " << data.cols << endl;
-        for (int j = 0; j < data.cols; j++) {
-            double temp = test.at<double>(0, j) - data.at<double>(i, j);
-            euclidean = euclidean + temp * temp;
-        }
-        
-    }
-
-
-
-    return nearest;
-}
 
 int findNearestAndPrint(Mat data, Mat test, vector<string> label_train, string label_test) {
     int result = 0;
