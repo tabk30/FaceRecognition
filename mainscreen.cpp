@@ -62,8 +62,8 @@ void MainScreen::startRecognition() {
         _result_display.append("<ol>");
         QString richText(_result_display.c_str());
 
-        this->ui->FR_Result->setText(richText);
-        this->ui->FR_Result->show();
+        this->ui->ResultLB->setText(richText);
+        this->ui->ResultLB->show();
     }
 }
 

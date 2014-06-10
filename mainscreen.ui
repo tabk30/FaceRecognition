@@ -132,24 +132,11 @@
      <string/>
     </property>
    </widget>
-  </widget>
-  <widget class="QGroupBox" name="groupBox_4">
-   <property name="geometry">
-    <rect>
-     <x>990</x>
-     <y>10</y>
-     <width>281</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <property name="title">
-    <string>List label assign for image</string>
-   </property>
    <widget class="QLabel" name="FR_Result">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>30</y>
+      <x>80</x>
+      <y>80</y>
       <width>251</width>
       <height>151</height>
      </rect>
@@ -159,6 +146,29 @@
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>10</y>
+     <width>281</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>List label assign for image</string>
+   </property>
+   <widget class="QTextBrowser" name="ResultLB">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>281</width>
+      <height>121</height>
+     </rect>
     </property>
    </widget>
   </widget>

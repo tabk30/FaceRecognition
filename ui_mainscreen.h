@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainscreen.ui'
 **
-** Created: Tue May 20 07:28:27 2014
+** Created: Tue Jun 10 17:40:49 2014
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -20,6 +20,7 @@
 #include <QtGui/QLabel>
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
+#include <QtGui/QTextBrowser>
 
 QT_BEGIN_NAMESPACE
 
@@ -35,8 +36,9 @@ public:
     QLabel *Face_Detect;
     QGroupBox *Face_recognjtion;
     QLabel *FaceRecognition;
-    QGroupBox *groupBox_4;
     QLabel *FR_Result;
+    QGroupBox *groupBox_4;
+    QTextBrowser *ResultLB;
 
     void setupUi(QDialog *MainScreen)
     {
@@ -72,13 +74,16 @@ public:
         FaceRecognition = new QLabel(Face_recognjtion);
         FaceRecognition->setObjectName(QString::fromUtf8("FaceRecognition"));
         FaceRecognition->setGeometry(QRect(10, 30, 591, 481));
+        FR_Result = new QLabel(Face_recognjtion);
+        FR_Result->setObjectName(QString::fromUtf8("FR_Result"));
+        FR_Result->setGeometry(QRect(80, 80, 251, 151));
+        FR_Result->setMidLineWidth(1);
         groupBox_4 = new QGroupBox(MainScreen);
         groupBox_4->setObjectName(QString::fromUtf8("groupBox_4"));
-        groupBox_4->setGeometry(QRect(990, 10, 281, 181));
-        FR_Result = new QLabel(groupBox_4);
-        FR_Result->setObjectName(QString::fromUtf8("FR_Result"));
-        FR_Result->setGeometry(QRect(20, 30, 251, 151));
-        FR_Result->setMidLineWidth(1);
+        groupBox_4->setGeometry(QRect(990, 10, 281, 141));
+        ResultLB = new QTextBrowser(groupBox_4);
+        ResultLB->setObjectName(QString::fromUtf8("ResultLB"));
+        ResultLB->setGeometry(QRect(0, 20, 281, 121));
 
         retranslateUi(MainScreen);
 
@@ -96,8 +101,8 @@ public:
         Face_Detect->setText(QString());
         Face_recognjtion->setTitle(QApplication::translate("MainScreen", "Face Recognition", 0, QApplication::UnicodeUTF8));
         FaceRecognition->setText(QString());
-        groupBox_4->setTitle(QApplication::translate("MainScreen", "List label assign for image", 0, QApplication::UnicodeUTF8));
         FR_Result->setText(QString());
+        groupBox_4->setTitle(QApplication::translate("MainScreen", "List label assign for image", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
