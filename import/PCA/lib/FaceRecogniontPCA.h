@@ -35,6 +35,8 @@ public:
     Mat tan_triggs_preprocessing(InputArray src,
             float alpha, float tau , float gamma, int sigma0,
             int sigma1);
+    Mat tan_triggs_preprocessing(Mat src);
+    int checkExit(vector<string> result, string label_temp);
     IplImage * face_detect;
     IplImage * face_recognition;
 private:

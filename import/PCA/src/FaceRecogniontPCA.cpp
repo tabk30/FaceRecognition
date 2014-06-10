@@ -13,13 +13,13 @@ FaceRecogniontPCA::FaceRecogniontPCA() {
     if (this->data.cols <= 0) {
         ImageData * image_process = new ImageData(100, 100);
         PathGenerate * path = new PathGenerate("import/PCA/Image/train", "Info/train.txt");
-        //PathGenerate * path = new PathGenerate("Image/train", "Info/train.txt");
+        //PathGenerate * path = new PathGenerate("Image/frontalface_alt_tree", "Info/train.txt");
         path->generate();
         delete path;
 
         vector<Mat> db;
-        //image_process->loadImage("import/PCA/Info/train.txt", db, this->label_train);
-        image_process->loadImage("Info/train.txt", db, this->label_train);
+        image_process->loadImage("import/PCA/Info/train.txt", db, this->label_train);
+        //image_process->loadImage("Info/train.txt", db, this->label_train);
         Mat train = formatImagesForPCA(db);
         ///////////////////////////////////////////////////////////////////
 
@@ -61,8 +61,10 @@ vector<string> FaceRecogniontPCA::recognition(string path_image) {
         Mat image = Mat(&temp);
         string label_temp = this->recognitionAFace(image);
         if (label_temp.compare("") != 0) {
-            testVector.push_back(i);
-            result.push_back(label_temp);
+            if (this->checkExit(result, label_temp) == 0) {
+                testVector.push_back(i);
+                result.push_back(label_temp);
+            }
         }
 
     }
@@ -87,7 +89,13 @@ string FaceRecogniontPCA::recognitionAFace(Mat origin) {
     int __nearlest = 0;
     Mat coeffs, test = origin;
     //coeffs.create(1, train_compress.rows, train_compress.type());
+    //    namedWindow( "Display window Before", WINDOW_AUTOSIZE );// Create a window for display.
+    //    imshow( "Display window Before", test );                   // Show our image inside it.
     test = this->synchronizationImage(test);
+    //    namedWindow( "Display window After", WINDOW_AUTOSIZE );// Create a window for display.
+    //    imshow( "Display window After", test );                   // Show our image inside it.
+    //
+    //    waitKey(0);                                          // Wait for a keystroke in the window
     vector<Mat> test_data;
     test_data.push_back(test);
     Mat test_compress = this->formatImagesForPCA(test_data);
@@ -163,8 +171,9 @@ string FaceRecogniontPCA::findNearest(Mat input) {
 }
 
 Mat FaceRecogniontPCA::synchronizationImage(Mat image) {
-    Mat origin;
-    cvtColor(image, origin, CV_BGR2GRAY);
+    //Mat origin;
+    //cvtColor(image, origin, CV_BGR2GRAY);
+    Mat origin = this->tan_triggs_preprocessing(image);
     Mat smallerImage;
     resize(origin, smallerImage, Size(70, 70), 0, 0, INTER_AREA);
 
@@ -255,7 +264,7 @@ double FaceRecogniontPCA::caculateLimit(string label) {
                     return this->caculateALimit(tmp_Mlist);
                 }
             }
-        } 
+        }
     }
     return 2700.F;
 }
@@ -359,4 +368,20 @@ Mat FaceRecogniontPCA::tan_triggs_preprocessing(InputArray src,
         I = tau * I;
     }
     return this->norm_0_255(I);
+}
+
+Mat FaceRecogniontPCA::tan_triggs_preprocessing(Mat src) {
+    Mat origin(src);
+    cv::Mat gs_rgb(origin.rows, origin.cols, CV_8UC1);
+    cv::cvtColor(origin, gs_rgb, CV_RGB2GRAY);
+    return tan_triggs_preprocessing(gs_rgb, 0.1F, 10.0F, 0.2F, 1, 2);
+}
+
+int FaceRecogniontPCA::checkExit(vector<string> result, string label_temp) {
+    for (unsigned int i = 0; i < result.size(); i++) {
+        if (label_temp.compare(result.at(i)) == 0) {
+            return 1;
+        }
+    }
+    return 0;
 }
